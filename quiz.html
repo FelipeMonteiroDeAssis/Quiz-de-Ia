@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interativo: Benefícios da IA</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --success-color: #2ec4b6;
+            --error-color: #e71d36;
+            --bg-color: ##8A2BE2;
+            --card-bg: #ffffff;
+            --text-color: #2b2d42;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .score-box {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a1c2c;
+        }
+
+        .options-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .option:hover:not(.disabled) {
+            border-color: var(--primary-color);
+            background-color: #f0f3ff;
+        }
+
+        /* Classes de Feedback */
+        .option.correct {
+            background-color: #d1fae5;
+            border-color: var(--success-color);
+            color: #065f46;
+        }
+
+        .option.correct::after {
+            content: "✓ Correto";
+            float: right;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .option.wrong {
+            background-color: #fee2e2;
+            border-color: var(--error-color);
+            color: #991b1b;
+        }
+
+        .option.wrong::after {
+            content: "✕ Errado";
+            float: right;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .disabled {
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .btn-reset {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--text-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+
+        .btn-reset:hover {
+            background-color: #1a1c2c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Quiz: IA no Dia a Dia</h1>
+        <p>Teste seus conhecimentos sobre os benefícios da Inteligência Artificial</p>
+    </div>
+
+    <div class="score-box">
+        Pontuação: <span id="current-score">0</span> / 10
+    </div>
+
+    <div id="quiz-body">
+        <!-- As perguntas serão geradas via JS -->
+    </div>
+
+    <button class="btn-reset" onclick="window.location.reload()">Reiniciar Quiz</button>
+</div>
+
+<script>
+    const questions = [
+        {
+            q: "Em redes sociais, como o Instagram ou Facebook, para que serve a IA?",
+            options: ["a) Para aumentar o brilho da tela", "b) Para personalizar o feed e filtrar conteúdo", "c) Para conectar o cabo de rede", "d) Para desligar o aparelho sozinho"],
+            correct: 2
+        },
+        {
+            q: "Nos aplicativos de navegação (Waze/Google Maps), qual é o principal benefício da IA?",
+            options: ["Prever o preço do combustível em tempo real.", "Alterar a cor das ruas no mapa para fins estéticos.", "Analisar o tráfego em tempo real para sugerir rotas mais rápidas.", "Permitir que o carro voe sobre o congestionamento."],
+            correct: 2
+        },
+        {
+            q: "Qual é o papel da IA nas plataformas de streaming (Netflix/Spotify)?",
+            options: ["Bloquear o acesso de outros usuários da mesma conta.", "Sugerir conteúdos personalizados com base no histórico.", "Aumentar o valor da mensalidade automaticamente.", "Criar filmes inteiros sem a participação de atores humanos."],
+            correct: 1
+        },
+        {
+            q: "Qual destas ferramentas é uma IA Generativa capaz de criar textos e responder perguntas?",
+            options: ["a) Calculadora.", "b) Chat GPT ou similares.", "c) Calendário.", "d) Bloco de notas."],
+            correct: 2
+        },
+        {
+            q: "O que o "Google Assistente", "Siri" ou "Alexa" fazem?",
+            options: ["a) Usam IA para entender comandos de voz e responder.", "b) Apenas gravam sons.", "c) Funcionam como um rádio comum.", "d) Escrevem cartas à mão"],
+            correct: 1
+        },
+        {
+            q: "Como corretores ortográficos e tradutores com IA ajudam na comunicação?",
+            options: ["Escrevendo pensamentos antes mesmo do usuário pensar.", "Traduzindo textos em tempo real e corrigindo a gramática.", "Impedindo o uso de gírias em conversas informais.", "Substituindo a necessidade de aprender a ler e escrever."],
+            correct: 1
+        },
+        {
+            q: "No comércio eletrônico, qual é uma vantagem da IA para o consumidor?",
+            options: ["Garantir que todos os produtos sejam gratuitos.", "Oferecer suporte imediato via chatbots inteligentes.", "Entregar o produto antes mesmo da compra ser efetuada.", "Esconder os produtos mais caros do catálogo."],
+            correct: 1
+        },
+        {
+            q: "De que forma a IA contribui para a economia de energia em casas inteligentes?",
+            options: ["Desligando a energia da casa inteira durante a noite.", "Ajustando iluminação e temperatura conforme a presença e preferência.", "Cobrando taxas extras de quem gasta muita luz.", "Transformando eletrodomésticos velhos em novos."],
+            correct: 1
+        },
+        {
+            q: "Qual o impacto positivo da IA na acessibilidade para pessoas com deficiência?",
+            options: ["Impedindo que usem redes sociais.", "Criando legendas automáticas e descrições de imagens para cegos.", "Removendo a necessidade de dispositivos assistivos físicos.", "Substituindo a interação humana por robôs."],
+            correct: 1
+        },
+        {
+            q: "Como a IA ajuda na produtividade profissional no dia a dia?",
+            options: ["Fazendo com que os funcionários trabalhem 24 horas por dia.", "Automatizando tarefas repetitivas e organizando grandes volumes de dados.", "Eliminando a necessidade de qualquer esforço mental.", "Gerando salários maiores de forma aleatória."],
+            correct: 1
+        }
+    ];
+
+    let score = 0;
+    const quizBody = document.getElementById('quiz-body');
+    const scoreDisplay = document.getElementById('current-score');
+
+    function renderQuiz() {
+        questions.forEach((item, qIndex) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.id = `q-card-${qIndex}`;
+
+            const qText = document.createElement('div');
+            qText.className = 'question-text';
+            qText.innerText = `${qIndex + 1}. ${item.q}`;
+            card.appendChild(qText);
+
+            const optionsList = document.createElement('div');
+            optionsList.className = 'options-list';
+
+            item.options.forEach((opt, oIndex) => {
+                const optDiv = document.createElement('div');
+                optDiv.className = 'option';
+                optDiv.innerText = opt;
+                optDiv.onclick = () => selectOption(qIndex, oIndex, optDiv);
+                optionsList.appendChild(optDiv);
+            });
+
+            card.appendChild(optionsList);
+            quizBody.appendChild(card);
+        });
+    }
+
+    function selectOption(qIndex, oIndex, element) {
+        const correctIndex = questions[qIndex].correct;
+        const card = document.getElementById(`q-card-${qIndex}`);
+        const allOptions = card.querySelectorAll('.option');
+
+        // Desativa todas as opções desta pergunta
+        allOptions.forEach(opt => opt.classList.add('disabled'));
+
+        if (oIndex === correctIndex) {
+            element.classList.add('correct');
+            score++;
+            scoreDisplay.innerText = score;
+        } else {
+            element.classList.add('wrong');
+            // Mostra qual era a correta
+            allOptions[correctIndex].classList.add('correct');
+        }
+    }
+
+    renderQuiz();
+</script>
+
+</body>
+</html>
