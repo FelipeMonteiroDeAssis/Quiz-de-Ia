@@ -162,110 +162,221 @@
 </div>
 
 <script>
-    const questions = [
-        {
-            q: "Em redes sociais, como o Instagram ou Facebook, para que serve a IA?",
-            options: ["a) Para aumentar o brilho da tela", "b) Para personalizar o feed e filtrar conteúdo", "c) Para conectar o cabo de rede", "d) Para desligar o aparelho sozinho"],
-            correct: 2
-        },
-        {
-            q: "Nos aplicativos de navegação (Waze/Google Maps), qual é o principal benefício da IA?",
-            options: ["Prever o preço do combustível em tempo real.", "Alterar a cor das ruas no mapa para fins estéticos.", "Analisar o tráfego em tempo real para sugerir rotas mais rápidas.", "Permitir que o carro voe sobre o congestionamento."],
-            correct: 2
-        },
-        {
-            q: "Qual é o papel da IA nas plataformas de streaming (Netflix/Spotify)?",
-            options: ["Bloquear o acesso de outros usuários da mesma conta.", "Sugerir conteúdos personalizados com base no histórico.", "Aumentar o valor da mensalidade automaticamente.", "Criar filmes inteiros sem a participação de atores humanos."],
-            correct: 1
-        },
-        {
-            q: "Qual destas ferramentas é uma IA Generativa capaz de criar textos e responder perguntas?",
-            options: ["a) Calculadora.", "b) Chat GPT ou similares.", "c) Calendário.", "d) Bloco de notas."],
-            correct: 2
-        },
-        {
-            q: "O que o "Google Assistente", "Siri" ou "Alexa" fazem?",
-            options: ["a) Usam IA para entender comandos de voz e responder.", "b) Apenas gravam sons.", "c) Funcionam como um rádio comum.", "d) Escrevem cartas à mão"],
-            correct: 1
-        },
-        {
-            q: "Como corretores ortográficos e tradutores com IA ajudam na comunicação?",
-            options: ["Escrevendo pensamentos antes mesmo do usuário pensar.", "Traduzindo textos em tempo real e corrigindo a gramática.", "Impedindo o uso de gírias em conversas informais.", "Substituindo a necessidade de aprender a ler e escrever."],
-            correct: 1
-        },
-        {
-            q: "No comércio eletrônico, qual é uma vantagem da IA para o consumidor?",
-            options: ["Garantir que todos os produtos sejam gratuitos.", "Oferecer suporte imediato via chatbots inteligentes.", "Entregar o produto antes mesmo da compra ser efetuada.", "Esconder os produtos mais caros do catálogo."],
-            correct: 1
-        },
-        {
-            q: "De que forma a IA contribui para a economia de energia em casas inteligentes?",
-            options: ["Desligando a energia da casa inteira durante a noite.", "Ajustando iluminação e temperatura conforme a presença e preferência.", "Cobrando taxas extras de quem gasta muita luz.", "Transformando eletrodomésticos velhos em novos."],
-            correct: 1
-        },
-        {
-            q: "Qual o impacto positivo da IA na acessibilidade para pessoas com deficiência?",
-            options: ["Impedindo que usem redes sociais.", "Criando legendas automáticas e descrições de imagens para cegos.", "Removendo a necessidade de dispositivos assistivos físicos.", "Substituindo a interação humana por robôs."],
-            correct: 1
-        },
-        {
-            q: "Como a IA ajuda na produtividade profissional no dia a dia?",
-            options: ["Fazendo com que os funcionários trabalhem 24 horas por dia.", "Automatizando tarefas repetitivas e organizando grandes volumes de dados.", "Eliminando a necessidade de qualquer esforço mental.", "Gerando salários maiores de forma aleatória."],
-            correct: 1
-        }
-    ];
+const questions = [
+    {
+        q: "Em redes sociais, como o Instagram ou Facebook, para que serve a IA?",
+        options: [
+            "Para aumentar o brilho da tela",
+            "Para personalizar o feed e filtrar conteúdo",
+            "Para conectar o cabo de rede",
+            "Para desligar o aparelho sozinho"
+        ],
+        correct: 1
+    },
+    {
+        q: "Nos aplicativos de navegação (Waze/Google Maps), qual é o principal benefício da IA?",
+        options: [
+            "Prever o preço do combustível em tempo real.",
+            "Analisar o tráfego em tempo real para sugerir rotas mais rápidas.",
+            "Alterar a cor das ruas no mapa para fins estéticos.",
+            "Permitir que o carro voe sobre o congestionamento."
+        ],
+        correct: 1
+    },
+    {
+        q: "Qual é o papel da IA nas plataformas de streaming (Netflix/Spotify)?",
+        options: [
+            "Bloquear o acesso de outros usuários da mesma conta.",
+            "Sugerir conteúdos personalizados com base no histórico.",
+            "Aumentar o valor da mensalidade automaticamente.",
+            "Criar filmes inteiros sem a participação de atores humanos."
+        ],
+        correct: 1
+    },
+    {
+        q: "Qual destas ferramentas é uma IA Generativa capaz de criar textos e responder perguntas?",
+        options: [
+            "Calculadora.",
+            "Chat GPT ou similares.",
+            "Calendário.",
+            "Bloco de notas."
+        ],
+        correct: 1
+    },
+    {
+        q: "O que o 'Google Assistente', 'Siri' ou 'Alexa' fazem?",
+        options: [
+            "Usam IA para entender comandos de voz e responder.",
+            "Apenas gravam sons.",
+            "Funcionam como um rádio comum.",
+            "Escrevem cartas à mão"
+        ],
+        correct: 0
+    },
+    {
+        q: "Como corretores ortográficos e tradutores com IA ajudam na comunicação?",
+        options: [
+            "Escrevendo pensamentos antes mesmo do usuário pensar.",
+            "Traduzindo textos em tempo real e corrigindo a gramática.",
+            "Impedindo o uso de gírias em conversas informais.",
+            "Substituindo a necessidade de aprender a ler e escrever."
+        ],
+        correct: 1
+    },
+    {
+        q: "No comércio eletrônico, qual é uma vantagem da IA para o consumidor?",
+        options: [
+            "Garantir que todos os produtos sejam gratuitos.",
+            "Oferecer suporte imediato via chatbots inteligentes.",
+            "Entregar o produto antes mesmo da compra ser efetuada.",
+            "Esconder os produtos mais caros do catálogo."
+        ],
+        correct: 1
+    },
+    {
+        q: "De que forma a IA contribui para a economia de energia em casas inteligentes?",
+        options: [
+            "Desligando a energia da casa inteira durante a noite.",
+            "Ajustando iluminação e temperatura conforme a presença e preferência.",
+            "Cobrando taxas extras de quem gasta muita luz.",
+            "Transformando eletrodomésticos velhos em novos."
+        ],
+        correct: 1
+    },
+    {
+        q: "Qual o impacto positivo da IA na acessibilidade para pessoas com deficiência?",
+        options: [
+            "Impedindo que usem redes sociais.",
+            "Criando legendas automáticas e descrições de imagens para cegos.",
+            "Removendo a necessidade de dispositivos assistivos físicos.",
+            "Substituindo a interação humana por robôs."
+        ],
+        correct: 1
+    },
+    {
+        q: "Como a IA ajuda na produtividade profissional no dia a dia?",
+        options: [
+            "Fazendo com que os funcionários trabalhem 24 horas por dia.",
+            "Automatizando tarefas repetitivas e organizando grandes volumes de dados.",
+            "Eliminando a necessidade de qualquer esforço mental.",
+            "Gerando salários maiores de forma aleatória."
+        ],
+        correct: 1
+    }
+];
 
-    let score = 0;
-    const quizBody = document.getElementById('quiz-body');
-    const scoreDisplay = document.getElementById('current-score');
+// Função para embaralhar arrays
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
 
-    function renderQuiz() {
-        questions.forEach((item, qIndex) => {
-            const card = document.createElement('div');
-            card.className = 'question-card';
-            card.id = `q-card-${qIndex}`;
+        const j = Math.floor(Math.random() * (i + 1));
 
-            const qText = document.createElement('div');
-            qText.className = 'question-text';
-            qText.innerText = `${qIndex + 1}. ${item.q}`;
-            card.appendChild(qText);
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 
-            const optionsList = document.createElement('div');
-            optionsList.className = 'options-list';
+// Embaralha perguntas e respostas
+questions.forEach(question => {
 
-            item.options.forEach((opt, oIndex) => {
-                const optDiv = document.createElement('div');
-                optDiv.className = 'option';
-                optDiv.innerText = opt;
-                optDiv.onclick = () => selectOption(qIndex, oIndex, optDiv);
-                optionsList.appendChild(optDiv);
-            });
+    const correctAnswer = question.options[question.correct];
 
-            card.appendChild(optionsList);
-            quizBody.appendChild(card);
+    shuffleArray(question.options);
+
+    question.correct =
+        question.options.indexOf(correctAnswer);
+});
+
+// Embaralha perguntas
+shuffleArray(questions);
+
+let score = 0;
+
+const quizBody =
+    document.getElementById('quiz-body');
+
+const scoreDisplay =
+    document.getElementById('current-score');
+
+function renderQuiz() {
+
+    questions.forEach((item, qIndex) => {
+
+        const card =
+            document.createElement('div');
+
+        card.className = 'question-card';
+
+        card.id = `q-card-${qIndex}`;
+
+        const qText =
+            document.createElement('div');
+
+        qText.className = 'question-text';
+
+        qText.innerText =
+            `${qIndex + 1}. ${item.q}`;
+
+        card.appendChild(qText);
+
+        const optionsList =
+            document.createElement('div');
+
+        optionsList.className = 'options-list';
+
+        item.options.forEach((opt, oIndex) => {
+
+            const optDiv =
+                document.createElement('div');
+
+            optDiv.className = 'option';
+
+            optDiv.innerText = opt;
+
+            optDiv.onclick = () =>
+                selectOption(qIndex, oIndex, optDiv);
+
+            optionsList.appendChild(optDiv);
         });
+
+        card.appendChild(optionsList);
+
+        quizBody.appendChild(card);
+    });
+}
+
+function selectOption(qIndex, oIndex, element) {
+
+    const correctIndex =
+        questions[qIndex].correct;
+
+    const card =
+        document.getElementById(`q-card-${qIndex}`);
+
+    const allOptions =
+        card.querySelectorAll('.option');
+
+    allOptions.forEach(opt =>
+        opt.classList.add('disabled')
+    );
+
+    if (oIndex === correctIndex) {
+
+        element.classList.add('correct');
+
+        score++;
+
+        scoreDisplay.innerText = score;
+
+    } else {
+
+        element.classList.add('wrong');
+
+        allOptions[correctIndex]
+            .classList.add('correct');
     }
+}
 
-    function selectOption(qIndex, oIndex, element) {
-        const correctIndex = questions[qIndex].correct;
-        const card = document.getElementById(`q-card-${qIndex}`);
-        const allOptions = card.querySelectorAll('.option');
-
-        // Desativa todas as opções desta pergunta
-        allOptions.forEach(opt => opt.classList.add('disabled'));
-
-        if (oIndex === correctIndex) {
-            element.classList.add('correct');
-            score++;
-            scoreDisplay.innerText = score;
-        } else {
-            element.classList.add('wrong');
-            // Mostra qual era a correta
-            allOptions[correctIndex].classList.add('correct');
-        }
-    }
-
-    renderQuiz();
+renderQuiz();
 </script>
 
 </body>
